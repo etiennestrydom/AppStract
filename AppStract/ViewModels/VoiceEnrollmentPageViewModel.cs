@@ -63,12 +63,12 @@ namespace AppStract.ViewModels
             RecordVoiceText = "Start Recording";
         }
 
-        public override async void OnNavigatingTo(NavigationParameters parameters)
-        {
-            await TextToSpeech.SpeakAsync("Please say the passphrase");
+        //public override async void OnNavigatingTo(NavigationParameters parameters)
+        //{
+        //    await TextToSpeech.SpeakAsync("Please say the passphrase");
 
-            RecordAudio();
-        }
+        //    RecordAudio();
+        //}
 
         private void VerifyUsersVoice()
         {
@@ -80,7 +80,7 @@ namespace AppStract.ViewModels
             var result = _myVoiceIt.CreateVoiceEnrollment("usr_9bbb34d6228b45e7b62521b18708a66a", "en-US", _audioRecorder.AudioFilePath + "/" + _audioRecorder.AudioFileName + ".wav");
         }
 
-        private void RecordAudio()
+        public void RecordAudio()
         {
             if (!_isRecording)
             {

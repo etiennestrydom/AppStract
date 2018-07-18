@@ -12,8 +12,10 @@
     x:Class="AppStract.Views.VoiceEnrollmentPage">
     <StackLayout>
         <Button
+            Pressed="Handle_Pressed"
+            Released="Handle_Released"
             Text="{Binding RecordVoiceText}"
-            Command="{Binding RecordVoiceCommand}" />
+             />
         <Button
             Text="Play Audio"
             Command="{Binding PlayAudioCommand}" />
