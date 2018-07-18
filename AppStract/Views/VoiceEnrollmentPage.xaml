@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ContentPage
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:android="clr-namespace:Xamarin.Forms.PlatformConfiguration.AndroidSpecific;assembly=Xamarin.Forms.Core"
+    xmlns:ios="clr-namespace:Xamarin.Forms.PlatformConfiguration.iOSSpecific;assembly=Xamarin.Forms.Core"
+    xmlns:macOS="clr-namespace:Xamarin.Forms.PlatformConfiguration.macOSSpecific;assembly=Xamarin.Forms.Core"
+    xmlns:windows="clr-namespace:Xamarin.Forms.PlatformConfiguration.WindowsSpecific;assembly=Xamarin.Forms.Core"
+    xmlns:behaviors="clr-namespace:Prism.Behaviors;assembly=Prism.Forms"
+    xmlns:ioc="clr-namespace:Prism.Ioc;assembly=Prism.Forms"
+    Title="Voice Enrollment"
+    x:Class="AppStract.Views.VoiceEnrollmentPage">
+    <StackLayout>
+        <Button
+            Text="{Binding RecordVoiceText}"
+            Command="{Binding RecordVoiceCommand}" />
+        <Button
+            Text="Play Audio"
+            Command="{Binding PlayAudioCommand}" />
+        <Button
+            Text="Stop Audio"
+            Command="{Binding StopAudioCommand}" />
+        <Button
+            Text="Send Audio"
+            Command="{Binding SendVoiceRecording}" />
+        <Button
+            Text="Verify Users Voice"
+            Command="{Binding VerifyUsersVoiceCommand}" />
+    </StackLayout>
+</ContentPage>
