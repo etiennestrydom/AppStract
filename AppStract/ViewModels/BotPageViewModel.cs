@@ -9,6 +9,11 @@ using Amazon;
 using Amazon.Lex.Model;
 using System.Threading.Tasks;
 using Xamarin.Essentials;
+using Plugin.SpeechRecognition;
+using System.Diagnostics;
+using System.Threading;
+using System.Timers;
+using System.Text.RegularExpressions;
 
 namespace AppStract.ViewModels
 {
@@ -22,22 +27,47 @@ namespace AppStract.ViewModels
         public ObservableCollection<Message> Messages { get; set; } = new ObservableCollection<Message>();
         public string TextToSend { get; set; }
         public ICommand OnSendCommand { get; set; }
-        //public ICommand OnSendCommand
-        //{
-        //    get
-        //    {
-        //        return new Command<string>(async (textToSend) =>
-        //        {
-        //            if (!string.IsNullOrEmpty(textToSend))
-        //            {
-        //                Messages.Insert(0, new Message() { Text = textToSend, User = App.User });
-        //                TextToSend = string.Empty;
+        public string Phrase { get; set; }
 
-        //                await SendTextToBot(textToSend);
-        //            }
-        //        });
-        //    }
-        //}
+        public ICommand ListenForCommand
+        {
+            get
+            {
+                return new Command(async () =>
+                {
+                    try
+                    {
+                        var listener = CrossSpeechRecognition.Current.ContinuousDictation().Subscribe(phrase =>
+                        {
+                            Phrase = Phrase + " " + phrase;
+                        });
+
+                        await Task.Delay(5000);
+                        listener.Dispose();
+
+                        await ExecuteTask();
+                    }
+                    catch (Exception e)
+                    {
+
+                    }
+                });
+            }
+        }
+
+        private async Task ExecuteTask()
+        {
+            if (!String.IsNullOrEmpty(Phrase))
+            {
+                var result = Regex.Replace(Phrase, " {2,}", " ");
+                string textToSend = result.Substring(1);
+
+                Messages.Insert(0, new Message() { Text = textToSend, User = App.User });
+                await SendTextToBot(Phrase);
+
+                Phrase = String.Empty;
+            }
+        }
 
         public BotPageViewModel(INavigationService navigationService) : base(navigationService)
         {
@@ -49,17 +79,47 @@ namespace AppStract.ViewModels
             Messages.Insert(0, new Message() { Text = "Hi" });
             Messages.Insert(0, new Message() { Text = "How are you?" });
 
-            OnSendCommand = new Command(async () =>
-            {
-                if (!string.IsNullOrEmpty(TextToSend))
-                {
-                    Messages.Insert(0, new Message() { Text = TextToSend, User = App.User });
-                    await SendTextToBot(TextToSend);
+            //OnSendCommand = new Command(async () =>
+            //{
+            //    if (!string.IsNullOrEmpty(TextToSend))
+            //    {
+            //        Messages.Insert(0, new Message() { Text = TextToSend, User = App.User });
+            //        await SendTextToBot(TextToSend);
 
-                    //TextToSend = string.Empty;
-                }
-            });
+            //        //TextToSend = string.Empty;
+            //    }
+            //});
+
+            //var listener = CrossSpeechRecognition
+            //.Current
+            //.ListenUntilPause()
+            //.Subscribe(async phrase =>
+            //{
+            //    //var stopWatch = new Stopwatch();
+            //    //stopWatch.Start();
+            //    //Phrase = Phrase + " " + phrase;
+
+            //    //var myTimer = new System.Timers.Timer();
+            //    //myTimer.Elapsed += new ElapsedEventHandler(async delegate
+            //    //{
+
+            //    //    stopWatch.Reset();
+            //    //});
+
+            //    //myTimer.Interval = 1000;
+            //    //myTimer.Enabled = true;
+
+            //    await ExecuteSendPhrase(phrase);
+            //});
         }
+
+        //private async Task ExecuteSendPhrase(string phrase)
+        //{
+        //    Messages.Insert(0, new Message() { Text = phrase, User = App.User });
+        //    await SendTextToBot(phrase);
+
+        //    Phrase = String.Empty;
+        //}
 
         private async Task SendTextToBot(string textToSend)
         {
@@ -70,8 +130,6 @@ namespace AppStract.ViewModels
                 UserId = _userId,
                 InputText = textToSend
             };
-
-            TextToSend = string.Empty;
 
             var response = await _amazonLex.PostTextAsync(postTextRequest);
 

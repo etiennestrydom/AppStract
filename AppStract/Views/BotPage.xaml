@@ -11,36 +11,41 @@
                 x:Key="MessageTemplateSelector" />
         </ResourceDictionary>
     </ContentPage.Resources>
-    <Grid
-        RowSpacing="0"
-        ColumnSpacing="0">
-        <Grid.RowDefinitions>
-            <RowDefinition
-                Height="*" />
-            <RowDefinition
-                Height="1" />
-            <RowDefinition
-                Height="Auto" />
-        </Grid.RowDefinitions>
-        <ListView
-            Grid.Row="0"
-            ItemTemplate="{StaticResource MessageTemplateSelector}"
-            ItemsSource="{Binding Messages}"
-            Margin="0"
-            Rotation="180"
-            FlowDirection="RightToLeft"
-            HasUnevenRows="True"
-            x:Name="ChatList"
-            VerticalOptions="FillAndExpand"
-            SeparatorColor="Transparent">
-        </ListView>
-        <BoxView
-            HorizontalOptions="FillAndExpand"
-            HeightRequest="1"
-            BackgroundColor="LightGray"
-            Grid.Row="1" />
-        <partials:ChatInputBarView
-            Grid.Row="2"
-            Margin="0,0,10,0" />
-    </Grid>
+    <StackLayout>
+        <Grid
+            RowSpacing="0"
+            ColumnSpacing="0">
+            <Grid.RowDefinitions>
+                <RowDefinition
+                    Height="*" />
+                <RowDefinition
+                    Height="1" />
+                <RowDefinition
+                    Height="Auto" />
+            </Grid.RowDefinitions>
+            <ListView
+                Grid.Row="0"
+                ItemTemplate="{StaticResource MessageTemplateSelector}"
+                ItemsSource="{Binding Messages}"
+                Margin="0"
+                Rotation="180"
+                FlowDirection="RightToLeft"
+                HasUnevenRows="True"
+                x:Name="ChatList"
+                VerticalOptions="FillAndExpand"
+                SeparatorColor="Transparent">
+            </ListView>
+            <BoxView
+                HorizontalOptions="FillAndExpand"
+                HeightRequest="1"
+                BackgroundColor="LightGray"
+                Grid.Row="1" />
+            <partials:ChatInputBarView
+                Grid.Row="2"
+                Margin="0,0,10,0" />
+        </Grid>
+        <Button
+            Text="Listen For Command"
+            Command="{Binding ListenForCommand}" />
+    </StackLayout>
 </ContentPage>
