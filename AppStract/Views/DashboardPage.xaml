@@ -1,0 +1,145 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ContentPage
+    xmlns:views="clr-namespace:AppStract.Views;assembly=AppStract"
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:prism="clr-namespace:Prism.Mvvm;assembly=Prism.Forms"
+    prism:ViewModelLocator.AutowireViewModel="True"
+    Style="{StaticResource GenericContentPage}"
+    Padding="15"
+    x:Class="AppStract.Views.DashboardPage">
+    <StackLayout
+        VerticalOptions="FillAndExpand">
+        <ScrollView
+            HorizontalOptions="FillAndExpand"
+            VerticalOptions="FillAndExpand">
+            <StackLayout
+                HorizontalOptions="FillAndExpand"
+                VerticalOptions="FillAndExpand"
+                Padding="{StaticResource DefaultPadding}">
+                <Frame
+                    CornerRadius="8"
+                    BackgroundColor="{StaticResource DarkerBlackOpaque}"
+                    OutlineColor="Transparent"
+                    HasShadow="false"
+                    VerticalOptions="Start">
+                    <StackLayout
+                        Orientation="Horizontal">
+                        <BoxView
+                            Style="{StaticResource DialogStrip}" />
+                        <StackLayout>
+                            <Label
+                                FontAttributes="Bold"
+                                Style="{StaticResource VCBodyTextTitle}"
+                                TextColor="White"
+                                Text="Good Day Herman Jane" />
+                            <Label
+                                TextColor="White"
+                                Style="{StaticResource VCSubBodyText}"
+                                Text="Welcom to Vodacom voice" />
+                        </StackLayout>
+                    </StackLayout>
+                </Frame>
+                <BoxView
+                    Style="{StaticResource VCSpaceSeperator}" />
+                <StackLayout
+                    Orientation="Horizontal">
+                    <Image
+                        HeightRequest="50"
+                        WidthRequest="50"
+                        Source="profile_icon.png">
+                        <Image.GestureRecognizers>
+                            <TapGestureRecognizer
+                                Command="{Binding NavigateDashboardList}"
+                                CommandParameter="AddEditSalesNotePage" />
+                        </Image.GestureRecognizers>
+                    </Image>
+                    <StackLayout
+                        Orientation="Vertical"
+                        VerticalOptions="EndAndExpand">
+                        <Label
+                            TextColor="White"
+                            Text="Airtime Balance"
+                            VerticalOptions="FillAndExpand"
+                            FontAttributes="Bold"
+                            Style="{StaticResource VCBodyTextTitle}"
+                            VerticalTextAlignment="End" />
+                        <Label
+                            TextColor="White"
+                            Text="R 120.59"
+                            VerticalOptions="FillAndExpand"
+                            Style="{StaticResource VCSubBodyText}"
+                            VerticalTextAlignment="Start" />
+                    </StackLayout>
+                </StackLayout>
+                <StackLayout>
+                    <Image
+                        HeightRequest="50"
+                        WidthRequest="50"
+                        Source="profile_icon.png"
+                        HorizontalOptions="End">
+                        <!--<Image.GestureRecognizers>
+                            <TapGestureRecognizer
+                                Command="{Binding SyncAccounts}" />
+                        </Image.GestureRecognizers>-->
+                    </Image>
+                </StackLayout>
+                <StackLayout
+                    VerticalOptions="StartAndExpand">
+                    <StackLayout
+                        VerticalOptions="CenterAndExpand"
+                        HorizontalOptions="FillAndExpand">
+                        <Label
+                            FontSize="20"
+                            Text="DATA"
+                            TextColor="White"
+                            FontAttributes="Bold"
+                            Style="{StaticResource VCBodyTextTitle}"
+                            HorizontalOptions="CenterAndExpand"
+                            HorizontalTextAlignment="Center" />
+                        <Label
+                            FontSize="50"
+                            Text="50 GB"
+                            TextColor="White"
+                            FontAttributes="Bold"
+                            Style="{StaticResource VCBodyTextTitle}"
+                            HorizontalOptions="CenterAndExpand"
+                            HorizontalTextAlignment="Center" />
+                        <Label
+                            FontSize="20"
+                            Text="LEFT"
+                            TextColor="White"
+                            FontAttributes="Bold"
+                            Style="{StaticResource VCBodyTextTitle}"
+                            HorizontalOptions="CenterAndExpand"
+                            HorizontalTextAlignment="Center" />
+                    </StackLayout>
+                </StackLayout>
+                <Frame
+                    Style="{StaticResource RoundedBlackOpaqueFrame}"
+                    Padding="15, 0">
+                    <StackLayout>
+                        <StackLayout
+                            VerticalOptions="CenterAndExpand"
+                            HorizontalOptions="FillAndExpand"
+                            Orientation="Horizontal"
+                            Padding="0, 15">
+                            <Image
+                                HorizontalOptions="CenterAndExpand"
+                                Source="{Binding SpeechIcon, Mode=TwoWay}"
+                                HeightRequest="50"
+                                WidthRequest="50"
+                                Margin="5"
+                                Style="{StaticResource LoginLogo}">
+                                <Image.GestureRecognizers>
+                                    <TapGestureRecognizer
+                                        Command="{Binding RecordVoiceCommand}" />
+                                </Image.GestureRecognizers>
+                            </Image>
+                        </StackLayout>
+                    </StackLayout>
+                </Frame>
+            </StackLayout>
+        </ScrollView>
+    </StackLayout>
+</ContentPage>

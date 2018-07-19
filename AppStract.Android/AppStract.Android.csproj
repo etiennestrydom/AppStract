@@ -80,6 +80,56 @@
     <AndroidResource Include="Resources\mipmap-xhdpi\ic_launcher.png" />
     <AndroidResource Include="Resources\mipmap-xxhdpi\ic_launcher.png" />
     <AndroidResource Include="Resources\mipmap-xxxhdpi\ic_launcher.png" />
+    <AndroidResource Include="Resources\mipmap-hdpi\vodacom_splash_screen.png" />
+    <AndroidResource Include="Resources\mipmap\splash_centered.xml" />
+    <AndroidResource Include="Resources\mipmap\vodacom_splash_screen.png" />
+    <AndroidResource Include="Resources\mipmap\ic_launcher.png" />
+    <AndroidResource Include="Resources\mipmap-mdpi\vodacom_splash_screen.png" />
+    <AndroidResource Include="Resources\mipmap-xhdpi\vodacom_splash_screen.png" />
+    <AndroidResource Include="Resources\mipmap-xxhdpi\vodacom_splash_screen.png" />
+    <AndroidResource Include="Resources\mipmap-xxxhdpi\vodacom_splash_screen.png" />
+    <AndroidResource Include="Resources\mipmap\evening_bg.png" />
+    <AndroidResource Include="Resources\mipmap-hdpi\evening_bg.png" />
+    <AndroidResource Include="Resources\mipmap-mdpi\evening_bg.png" />
+    <AndroidResource Include="Resources\mipmap-xhdpi\evening_bg.png" />
+    <AndroidResource Include="Resources\mipmap-xxhdpi\evening_bg.png" />
+    <AndroidResource Include="Resources\mipmap-xxxhdpi\evening_bg.png" />
+    <AndroidResource Include="Resources\mipmap\vc_icon.png" />
+    <AndroidResource Include="Resources\mipmap-hdpi\vc_icon.png" />
+    <AndroidResource Include="Resources\mipmap-mdpi\vc_icon.png" />
+    <AndroidResource Include="Resources\mipmap-xhdpi\vc_icon.png" />
+    <AndroidResource Include="Resources\mipmap-xxhdpi\vc_icon.png" />
+    <AndroidResource Include="Resources\mipmap-xxxhdpi\vc_icon.png" />
+    <AndroidResource Include="Resources\drawable\evening_bg.png" />
+    <AndroidResource Include="Resources\drawable\ic_launcher.png" />
+    <AndroidResource Include="Resources\drawable\splash_centered.xml" />
+    <AndroidResource Include="Resources\drawable\vc_icon.png" />
+    <AndroidResource Include="Resources\drawable\vodacom_splash_screen.png" />
+    <AndroidResource Include="Resources\drawable-hdpi\evening_bg.png" />
+    <AndroidResource Include="Resources\drawable-hdpi\ic_launcher.png" />
+    <AndroidResource Include="Resources\drawable-hdpi\vc_icon.png" />
+    <AndroidResource Include="Resources\drawable-hdpi\vodacom_splash_screen.png" />
+    <AndroidResource Include="Resources\drawable-mdpi\evening_bg.png" />
+    <AndroidResource Include="Resources\drawable-mdpi\ic_launcher.png" />
+    <AndroidResource Include="Resources\drawable-mdpi\vc_icon.png" />
+    <AndroidResource Include="Resources\drawable-mdpi\vodacom_splash_screen.png" />
+    <AndroidResource Include="Resources\drawable-xhdpi\evening_bg.png" />
+    <AndroidResource Include="Resources\drawable-xhdpi\ic_launcher.png" />
+    <AndroidResource Include="Resources\drawable-xhdpi\vc_icon.png" />
+    <AndroidResource Include="Resources\drawable-xhdpi\vodacom_splash_screen.png" />
+    <AndroidResource Include="Resources\drawable-xxhdpi\evening_bg.png" />
+    <AndroidResource Include="Resources\drawable-xxhdpi\ic_launcher.png" />
+    <AndroidResource Include="Resources\drawable-xxhdpi\vc_icon.png" />
+    <AndroidResource Include="Resources\drawable-xxhdpi\vodacom_splash_screen.png" />
+    <AndroidResource Include="Resources\drawable-xxxhdpi\evening_bg.png" />
+    <AndroidResource Include="Resources\drawable-xxxhdpi\ic_launcher.png" />
+    <AndroidResource Include="Resources\drawable-xxxhdpi\vc_icon.png" />
+    <AndroidResource Include="Resources\drawable-xxxhdpi\vodacom_splash_screen.png" />
+    <AndroidResource Include="Resources\mipmap-xxxhdpi\speech_icon.png" />
+    <AndroidResource Include="Resources\drawable-xxxhdpi\speech_icon.png" />
+    <AndroidResource Include="Resources\drawable-xxxhdpi\speech_recording_Icon.png" />
+    <AndroidResource Include="Resources\mipmap-xxxhdpi\profile_icon.png" />
+    <AndroidResource Include="Resources\drawable-xxxhdpi\profile_icon.png" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Properties\AndroidManifest.xml" />
@@ -99,6 +149,13 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Dependencies\" />
+    <Folder Include="Resources\mipmap\" />
+    <Folder Include="Resources\drawable\" />
+    <Folder Include="Resources\drawable-hdpi\" />
+    <Folder Include="Resources\drawable-mdpi\" />
+    <Folder Include="Resources\drawable-xhdpi\" />
+    <Folder Include="Resources\drawable-xxhdpi\" />
+    <Folder Include="Resources\drawable-xxxhdpi\" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\Android\Xamarin.Android.CSharp.targets" />
 </Project>

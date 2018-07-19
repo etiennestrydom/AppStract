@@ -16,6 +16,7 @@
 
   <ItemGroup>
     <Compile Remove="Dependencies\AudioRecorder.cs" />
+    <Compile Remove="Views\DashboardPage.cs" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Dependencies\" />

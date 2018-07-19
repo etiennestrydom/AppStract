@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ContentPage
+    xmlns:views="clr-namespace:AppStract.Views;assembly=AppStract"
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:prism="clr-namespace:Prism.Mvvm;assembly=Prism.Forms"
+    prism:ViewModelLocator.AutowireViewModel="True"
+    Style="{StaticResource GenericContentPage}"
+    Padding="15"
+    x:Class="AppStract.Views.LoginPage">
+    <StackLayout
+        Style="{StaticResource StackLayoutTransparentPadding}">
+        <StackLayout
+            VerticalOptions="Start"
+            HorizontalOptions="FillAndExpand">
+            <Image
+                HorizontalOptions="EndAndExpand"
+                Source="vc_icon.png"
+                HeightRequest="30"
+                WidthRequest="30"
+                Style="{StaticResource LoginLogo}" />
+        </StackLayout>
+        <StackLayout
+            VerticalOptions="Start"
+            HorizontalOptions="FillAndExpand">
+            <Label
+                Text="Log in to Your Vodacom"
+                Style="{StaticResource PageTitle}" />
+        </StackLayout>
+        <StackLayout
+            Style="{StaticResource DialogWrapper}"
+            VerticalOptions="Start"
+            HorizontalOptions="FillAndExpand">
+            <Label
+                Text="Welcome to Vodacom Voice, our new innovative authentication speech recognition software service"
+                Style="{StaticResource PageSecondaryTitle}" />
+            <StackLayout>
+                <StackLayout.GestureRecognizers>
+                    <TapGestureRecognizer
+                        Command="{Binding RecordVoiceCommand}"
+                        CommandParameter="{Binding .}" />
+                </StackLayout.GestureRecognizers>
+                <Image
+                    HorizontalOptions="CenterAndExpand"
+                    Source="{Binding SpeechIcon, Mode=TwoWay}"
+                    HeightRequest="120"
+                    WidthRequest="120"
+                    Margin="20"
+                    Style="{StaticResource LoginLogo}" />
+            </StackLayout>
+            <Label
+                Font="18, Bold"
+                Text="Clearly voice your secret pass"
+                Style="{StaticResource PageSecondaryTitle}" />
+            <Label
+                Font="Bold"
+                Text="phrase in order to login ..."
+                Margin="0, 0, 0, 20"
+                Style="{StaticResource PageSecondaryTitle}" />
+            <Label
+                Font="Bold"
+                Text="OR"
+                Margin="20, 0, 0, 20"
+                Style="{StaticResource PageSecondaryTitle}" />
+
+           
+            <Button
+                Text="{Binding RecordVoiceText}"
+            Command="{Binding RecordVoiceCommand}"
+                Style="{StaticResource PrimaryCTA}" />
+            
+            <Button
+                Text="Traditional Text Login"
+                Command="{Binding LoginCommand}"
+                Style="{StaticResource PrimaryCTA}" />
+        </StackLayout>
+    </StackLayout>
+</ContentPage>

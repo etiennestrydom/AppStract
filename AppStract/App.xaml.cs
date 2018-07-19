@@ -24,7 +24,8 @@ namespace AppStract
         {
             InitializeComponent();
 
-            await NavigationService.NavigateAsync("NavigationPage/VoiceEnrollmentPage");
+           await NavigationService.NavigateAsync("DashboardPage");
+            //await NavigationService.NavigateAsync("NavigationPage/VoiceEnrollmentPage");
         }
 
         protected override void RegisterTypes(IContainerRegistry containerRegistry)
@@ -32,6 +33,8 @@ namespace AppStract
             containerRegistry.RegisterForNavigation<NavigationPage>();
             containerRegistry.RegisterForNavigation<MainPage>();
             containerRegistry.RegisterForNavigation<VoiceEnrollmentPage>();
+            containerRegistry.RegisterForNavigation<LoginPage>();
+            containerRegistry.RegisterForNavigation<DashboardPage>();
         }
     }
 }

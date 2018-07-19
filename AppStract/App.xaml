@@ -1,10 +1,831 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
+<?xml version="1.0" encoding="utf-8"?>
 <prism:PrismApplication
     xmlns="http://xamarin.com/schemas/2014/forms"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
     xmlns:prism="clr-namespace:Prism.Unity;assembly=Prism.Unity.Forms"
     x:Class="AppStract.App">
-    <Application.Resources>
-        <!-- Application resource dictionary -->
-    </Application.Resources>
+     <prism:PrismApplication.Resources>
+        <ResourceDictionary>
+            <ControlTemplate
+                x:Key="TabbarTemplate">
+                <ContentPresenter>
+                </ContentPresenter>
+            </ControlTemplate>
+            <x:String
+                x:Key="DateTimeFormatCreated">Created: {0:dd MMMM yyyy}, {0:hh:mm}</x:String>
+            <x:String
+                x:Key="DateTimeFormatSync">LastSync: {0:dd MMMM yyyy}, {0:hh:mm}</x:String>
+            <x:String
+                x:Key="DateFormat">{0:dd MMMM yyyy}</x:String>
+            <x:String
+                x:Key="DateTimeFormat">{0:dd MMMM yyyy}, {0:hh:mm}</x:String>
+            <x:String
+                x:Key="CurrencyFormat">R{0:### ### ##0.00}</x:String>
+            <x:String
+                x:Key="CurrencyFormatAR">A/Revenue: R{0:### ### ##0.00}</x:String>
+            <Color
+                x:Key="PrimaryVodacomRed">#990000</Color>
+            <Color
+                x:Key="VodacomRed">#E60000</Color>
+            <Color
+                x:Key="LightGray">#F4F4F4</Color>
+            <Color
+                x:Key="Gray">#666666</Color>
+            <Color
+                x:Key="VCDarkGray">#666666</Color>
+            <Color
+                x:Key="VCBackgroundDarkGray">#333433</Color>
+            <Color
+                x:Key="VCLightGray">#EBEBEB</Color>
+            <Color
+                x:Key="White">#FFFFFF</Color>
+            <Color
+                x:Key="SalesNotePrimary">#A137A5</Color>
+            <Color
+                x:Key="DarkerBlackOpaque"
+                x:FactoryMethod="FromRgba">
+                <x:Arguments>
+                    <x:Int32>0</x:Int32>
+                    <x:Int32>0</x:Int32>
+                    <x:Int32>0</x:Int32>
+                    <x:Int32>90</x:Int32>
+                </x:Arguments>
+            </Color>
+            <Color
+                x:Key="LightGrayOpaque"
+                x:FactoryMethod="FromRgba">
+                <x:Arguments>
+                    <x:Int32>255</x:Int32>
+                    <x:Int32>255</x:Int32>
+                    <x:Int32>255</x:Int32>
+                    <x:Int32>80</x:Int32>
+                </x:Arguments>
+            </Color>
+            <Style
+                TargetType="ContentPage"
+                ApplyToDerivedTypes="True">
+                <Setter
+                    Property="Padding"
+                    Value="0, 0, 0, 0" />
+            </Style>
+            <Style
+                TargetType="Label"
+                x:Key="WhiteText">
+                <Setter
+                    Property="TextColor"
+                    Value="#ffffff" />
+            </Style>
+            <OnPlatform
+                x:Key="DefaultPadding"
+                x:TypeArguments="Thickness">
+                <On
+                    Platform="iOS"
+                    Value="15" />
+                <On
+                    Platform="Android"
+                    Value="15" />
+            </OnPlatform>
+            <OnPlatform
+                x:Key="DefaultMargin"
+                x:TypeArguments="Thickness">
+                <On
+                    Platform="iOS"
+                    Value="15" />
+                <On
+                    Platform="Android"
+                    Value="15" />
+            </OnPlatform>
+            <OnPlatform
+                x:Key="DefaultPagePadding"
+                x:TypeArguments="Thickness">
+                <On
+                    Platform="iOS"
+                    Value="0,24,0,0" />
+                <On
+                    Platform="Android"
+                    Value="0,20,0,0" />
+            </OnPlatform>
+            <Style
+                x:Key="DialogWrapper"
+                TargetType="StackLayout">
+                <Setter
+                    Property="BackgroundColor"
+                    Value="{StaticResource DarkerBlackOpaque}" />
+                <Setter
+                    Property="Padding"
+                    Value="15,15" />
+                <Setter
+                    Property="Orientation"
+                    Value="Vertical" />
+            </Style>
+            <Style
+                x:Key="DialogStrip"
+                TargetType="BoxView">
+                <Setter
+                    Property="BackgroundColor"
+                    Value="{StaticResource VodacomRed}" />
+                <Setter
+                    Property="VerticalOptions"
+                    Value="FillAndExpand" />
+                <Setter
+                    Property="WidthRequest"
+                    Value="3" />
+            </Style>
+            <Style
+                x:Key="DashboardDivider"
+                TargetType="BoxView">
+                <Setter
+                    Property="HorizontalOptions"
+                    Value="FillAndExpand" />
+                <Setter
+                    Property="BackgroundColor"
+                    Value="White" />
+                <Setter
+                    Property="HeightRequest"
+                    Value="1" />
+            </Style>
+            <Style
+                x:Key="DashboardWrapper"
+                TargetType="StackLayout">
+                <Setter
+                    Property="Orientation"
+                    Value="Horizontal" />
+                <Setter
+                    Property="Padding"
+                    Value="15,10" />
+            </Style>
+            <OnPlatform
+                x:Key="PagePadding"
+                x:TypeArguments="Thickness">
+                <On
+                    Platform="iOS"
+                    Value="0,80,0,0" />
+                <On
+                    Platform="Android"
+                    Value="0,60,0,0" />
+            </OnPlatform>
+            <!-- Generic Control Styles -->
+            <Style
+                x:Key="TabImage"
+                TargetType="Image">
+                <Setter
+                    Property="VerticalOptions"
+                    Value="CenterAndExpand" />
+                <Setter
+                    Property="HeightRequest"
+                    Value="20" />
+                <Setter
+                    Property="WidthRequest"
+                    Value="20" />
+            </Style>
+            <Style
+                x:Key="TabButton"
+                TargetType="Label">
+                <Setter
+                    Property="Margin"
+                    Value="0,3,0,0" />
+                <Setter
+                    Property="FontSize"
+                    Value="12" />
+                <Setter
+                    Property="TextColor"
+                    Value="{StaticResource Gray}" />
+                <Setter
+                    Property="VerticalOptions"
+                    Value="FillAndExpand" />
+                <Setter
+                    Property="VerticalTextAlignment"
+                    Value="Center" />
+                <Setter
+                    Property="HorizontalTextAlignment"
+                    Value="Center" />
+            </Style>
+            <Style
+                x:Key="RedBorderBtn"
+                TargetType="Button">
+                <Setter
+                    Property="BorderColor"
+                    Value="{StaticResource VodacomRed}" />
+                <Setter
+                    Property="TextColor"
+                    Value="{StaticResource VodacomRed}" />
+                <Setter
+                    Property="BackgroundColor"
+                    Value="Transparent" />
+                <Setter
+                    Property="BorderWidth"
+                    Value="1" />
+            </Style>
+            <Style
+                x:Key="TabBoxView"
+                TargetType="BoxView">
+                <Setter
+                    Property="BackgroundColor"
+                    Value="{StaticResource LightGray}" />
+                <Setter
+                    Property="HeightRequest"
+                    Value="3" />
+            </Style>
+            <Style
+                x:Key="LoadingScreenBackground"
+                TargetType="StackLayout">
+                <Setter
+                    Property="HorizontalOptions"
+                    Value="FillAndExpand" />
+                <Setter
+                    Property="VerticalOptions"
+                    Value="FillAndExpand" />
+                <Setter
+                    Property="BackgroundColor"
+                    Value="{StaticResource White}" />
+            </Style>
+            <Style
+                x:Key="LoadingScreenActivityIndicator"
+                TargetType="ActivityIndicator">
+                <Setter
+                    Property="Color"
+                    Value="{StaticResource VodacomRed}" />
+                <Setter
+                    Property="HorizontalOptions"
+                    Value="Center" />
+                <Setter
+                    Property="VerticalOptions"
+                    Value="CenterAndExpand" />
+            </Style>
+            <Style
+                x:Key="VCDefaultStackPadding"
+                TargetType="StackLayout">
+                <Setter
+                    Property="Padding"
+                    Value="15" />
+            </Style>
+            <Style
+                x:Key="VCStackLayout"
+                TargetType="StackLayout">
+                <Setter
+                    Property="Padding"
+                    Value="15, 10, 15, 0" />
+                <Setter
+                    Property="HorizontalOptions"
+                    Value="FillAndExpand" />
+                <Setter
+                    Property="VerticalOptions"
+                    Value="FillAndExpand" />
+            </Style>
+            <Style
+                x:Key="VCHeading"
+                TargetType="Label">
+                <Setter
+                    Property="FontSize"
+                    Value="28" />
+                <Setter
+                    Property="HorizontalOptions"
+                    Value="FillAndExpand" />
+                <Setter
+                    Property="VerticalOptions"
+                    Value="FillAndExpand" />
+            </Style>
+            <Style
+                x:Key="VCSubHeading"
+                TargetType="Label">
+                <Setter
+                    Property="FontSize"
+                    Value="24" />
+                <Setter
+                    Property="HorizontalOptions"
+                    Value="FillAndExpand" />
+            </Style>
+            <Style
+                x:Key="VCCardTitle"
+                TargetType="Label">
+                <Setter
+                    Property="FontSize"
+                    Value="20" />
+                <Setter
+                    Property="FontAttributes"
+                    Value="Bold" />
+                <Setter
+                    Property="HorizontalOptions"
+                    Value="FillAndExpand" />
+                <Setter
+                    Property="TextColor"
+                    Value="{StaticResource VCDarkGray}" />
+            </Style>
+            <Style
+                x:Key="VCBodyTextTitle"
+                TargetType="Label">
+                <Setter
+                    Property="FontSize"
+                    Value="16" />
+                <Setter
+                    Property="HorizontalOptions"
+                    Value="FillAndExpand" />
+                <Setter
+                    Property="TextColor"
+                    Value="{StaticResource VCDarkGray}" />
+                <Setter
+                    Property="FontAttributes"
+                    Value="Bold" />
+            </Style>
+            <Style
+                x:Key="VCBodyText"
+                TargetType="Label">
+                <Setter
+                    Property="FontSize"
+                    Value="16" />
+                <Setter
+                    Property="HorizontalOptions"
+                    Value="FillAndExpand" />
+                <Setter
+                    Property="TextColor"
+                    Value="{StaticResource VCDarkGray}" />
+            </Style>
+            <Style
+                x:Key="VCSubBodyTitleText"
+                TargetType="Label">
+                <Setter
+                    Property="FontSize"
+                    Value="14" />
+                <Setter
+                    Property="FontAttributes"
+                    Value="Bold" />
+                <Setter
+                    Property="HorizontalOptions"
+                    Value="FillAndExpand" />
+                <Setter
+                    Property="TextColor"
+                    Value="{StaticResource VCDarkGray}" />
+            </Style>
+            <Style
+                x:Key="VCSubBodyText"
+                TargetType="Label">
+                <Setter
+                    Property="FontSize"
+                    Value="14" />
+                <Setter
+                    Property="HorizontalOptions"
+                    Value="FillAndExpand" />
+                <Setter
+                    Property="TextColor"
+                    Value="{StaticResource VCDarkGray}" />
+            </Style>
+            <Style
+                x:Key="VCListSeperator"
+                TargetType="BoxView">
+                <Setter
+                    Property="HeightRequest"
+                    Value="1" />
+                <Setter
+                    Property="BackgroundColor"
+                    Value="{StaticResource VCLightGray}" />
+            </Style>
+            <Style
+                x:Key="VCSpaceSeperator"
+                TargetType="BoxView">
+                <Setter
+                    Property="HeightRequest"
+                    Value="1" />
+                <Setter
+                    Property="Margin"
+                    Value="0, 3" />
+                <Setter
+                    Property="BackgroundColor"
+                    Value="Transparent" />
+            </Style>
+            <Style
+                x:Key="VCListBlackSeperator"
+                TargetType="BoxView">
+                <Setter
+                    Property="HeightRequest"
+                    Value="1" />
+                <Setter
+                    Property="Margin"
+                    Value="0, 5, 0, 0" />
+                <Setter
+                    Property="BackgroundColor"
+                    Value="Black" />
+            </Style>
+            <Style
+                x:Key="VCFullSeperator"
+                TargetType="BoxView">
+                <Setter
+                    Property="HeightRequest"
+                    Value="1" />
+                <Setter
+                    Property="Margin"
+                    Value="0" />
+                <Setter
+                    Property="BackgroundColor"
+                    Value="{StaticResource VCLightGray}" />
+            </Style>
+            <Style
+                x:Key="VCFDashboardSeperator"
+                TargetType="BoxView">
+                <Setter
+                    Property="HeightRequest"
+                    Value="1" />
+                <Setter
+                    Property="Margin"
+                    Value="0" />
+                <Setter
+                    Property="BackgroundColor"
+                    Value="{StaticResource VCLightGray}" />
+            </Style>
+            <Style
+                x:Key="VCGrayPaddingSeperator"
+                TargetType="BoxView">
+                <Setter
+                    Property="HeightRequest"
+                    Value="15" />
+                <Setter
+                    Property="Margin"
+                    Value="0" />
+                <Setter
+                    Property="BackgroundColor"
+                    Value="{StaticResource VCLightGray}" />
+            </Style>
+            <Style
+                x:Key="VCCTABar"
+                TargetType="StackLayout">
+                <Setter
+                    Property="BackgroundColor"
+                    Value="{StaticResource SalesNotePrimary}" />
+                <Setter
+                    Property="VerticalOptions"
+                    Value="End" />
+                <Setter
+                    Property="HorizontalOptions"
+                    Value="FillAndExpand" />
+                <Setter
+                    Property="Padding"
+                    Value="0, 30" />
+            </Style>
+            <Style
+                x:Key="VCCTABarButton"
+                TargetType="Label">
+                <Setter
+                    Property="TextColor"
+                    Value="{StaticResource White}" />
+                <Setter
+                    Property="HorizontalOptions"
+                    Value="CenterAndExpand" />
+                <Setter
+                    Property="VerticalOptions"
+                    Value="CenterAndExpand" />
+                <Setter
+                    Property="HorizontalTextAlignment"
+                    Value="Center" />
+                <Setter
+                    Property="BackgroundColor"
+                    Value="Transparent" />
+            </Style>
+            <Style
+                x:Key="VCDateLabel"
+                TargetType="Label">
+                <Setter
+                    Property="HorizontalOptions"
+                    Value="FillAndExpand" />
+                <Setter
+                    Property="FontSize"
+                    Value="14" />
+            </Style>
+            <Style
+                x:Key="VCContentMissingLabel"
+                TargetType="Label">
+                <Setter
+                    Property="HorizontalTextAlignment"
+                    Value="Center" />
+                <Setter
+                    Property="VerticalTextAlignment"
+                    Value="Center" />
+                <Setter
+                    Property="HorizontalOptions"
+                    Value="FillAndExpand" />
+                <Setter
+                    Property="VerticalOptions"
+                    Value="FillAndExpand" />
+                <Setter
+                    Property="FontSize"
+                    Value="18" />
+            </Style>
+            <!--
+                Navigation Menu
+            -->
+            <Style
+                x:Key="VCNavBarContent"
+                TargetType="ContentPage">
+                <Setter
+                    Property="Padding"
+                    Value="30, 50, 30, 30" />
+                <Setter
+                    Property="BackgroundColor"
+                    Value="{StaticResource VCBackgroundDarkGray}" />
+            </Style>
+            <!-- -->
+            <Style
+                x:Key="VCSalesNoteCreateBackground"
+                TargetType="StackLayout">
+                <Setter
+                    Property="Margin"
+                    Value="0" />
+                <Setter
+                    Property="BackgroundColor"
+                    Value="#FFFFFF" />
+                <Setter
+                    Property="HorizontalOptions"
+                    Value="FillAndExpand" />
+                <Setter
+                    Property="VerticalOptions"
+                    Value="FillAndExpand" />
+            </Style>
+            <Style
+                x:Key="VCSalesNoteViewEditStack"
+                TargetType="StackLayout">
+                <Setter
+                    Property="Margin"
+                    Value="0" />
+                <Setter
+                    Property="Padding"
+                    Value="15" />
+                <Setter
+                    Property="BackgroundColor"
+                    Value="#FFFFFF" />
+                <Setter
+                    Property="HorizontalOptions"
+                    Value="FillAndExpand" />
+                <Setter
+                    Property="VerticalOptions"
+                    Value="FillAndExpand" />
+            </Style>
+            <!-- Login Styles -->
+            <Style
+                x:Key="LoginLogo"
+                TargetType="Image">
+                <Setter
+                    Property="VerticalOptions"
+                    Value="Start" />
+                <Setter
+                    Property="HorizontalOptions"
+                    Value="Start" />
+                <Setter
+                    Property="HeightRequest"
+                    Value="32" />
+                <Setter
+                    Property="WidthRequest"
+                    Value="32" />
+            </Style>
+            <Style
+                x:Key="VersionLabel"
+                TargetType="Label">
+                <Setter
+                    Property="VerticalOptions"
+                    Value="EndAndExpand" />
+                <Setter
+                    Property="TextColor"
+                    Value="#ffffff" />
+            </Style>
+            <Style
+                x:Key="GenericContentPage"
+                TargetType="ContentPage"
+                ApplyToDerivedTypes="True">
+                <Setter
+                    Property="BackgroundImage"
+                    Value="evening_bg" />
+                <Setter
+                    Property="Padding"
+                    Value="{StaticResource DefaultPagePadding}" />
+            </Style>
+            <Style
+                x:Key="GenericContentPageBlurred"
+                TargetType="ContentPage"
+                ApplyToDerivedTypes="True">
+                <Setter
+                    Property="BackgroundImage"
+                    Value="evening_sl.png" />
+                <Setter
+                    Property="Padding"
+                    Value="{StaticResource DefaultPagePadding}" />
+            </Style>
+            <Style
+                x:Key="BackgroundContentPage"
+                TargetType="ContentPage"
+                ApplyToDerivedTypes="True">
+                <Setter
+                    Property="BackgroundImage"
+                    Value="evening_bg.png" />
+            </Style>
+            <Style
+                x:Key="DashboardContentPage"
+                TargetType="ContentPage"
+                ApplyToDerivedTypes="True">
+                <Setter
+                    Property="BackgroundImage"
+                    Value="morning_sl" />
+                <Setter
+                    Property="Padding"
+                    Value="{StaticResource PagePadding}" />
+            </Style>
+            <Style
+                x:Key="PageTitle"
+                TargetType="Label">
+                <Setter
+                    Property="FontSize"
+                    Value="28" />
+                <Setter
+                    Property="VerticalTextAlignment"
+                    Value="Center" />
+                <Setter
+                    Property="TextColor"
+                    Value="White" />
+                <Setter
+                    Property="HorizontalTextAlignment"
+                    Value="Center" />
+                <Setter
+                    Property="Margin"
+                    Value="30, 0" />
+            </Style>
+            <Style
+                x:Key="PageSecondaryTitle"
+                TargetType="Label">
+                <Setter
+                    Property="FontSize"
+                    Value="17" />
+                <Setter
+                    Property="VerticalTextAlignment"
+                    Value="Center" />
+                <Setter
+                    Property="TextColor"
+                    Value="White" />
+                <Setter
+                    Property="HorizontalTextAlignment"
+                    Value="Center" />
+                <Setter
+                    Property="Margin"
+                    Value="10, 0" />
+            </Style>
+
+            
+            <Style
+                x:Key="PageSubTitle"
+                TargetType="Label">
+                <Setter
+                    Property="FontSize"
+                    Value="20" />
+                <Setter
+                    Property="VerticalTextAlignment"
+                    Value="Center" />
+                <Setter
+                    Property="TextColor"
+                    Value="White" />
+                <Setter
+                    Property="HorizontalTextAlignment"
+                    Value="Center" />
+                <Setter
+                    Property="Margin"
+                    Value="15, 0" />
+                <Setter
+                    Property="TextColor"
+                    Value="{StaticResource VCLightGray}" />
+            </Style>
+            <Style
+                x:Key="EntryLabel"
+                TargetType="Label">
+                <Setter
+                    Property="FontSize"
+                    Value="16" />
+                <!--<Setter Property="FontFamily" Value="{StaticResource VodacomFont}" />-->
+                <Setter
+                    Property="TextColor"
+                    Value="White" />
+            </Style>
+            <Style
+                x:Key="GenericEntry"
+                TargetType="Entry">
+                <Setter
+                    Property="Margin"
+                    Value="0, 0, 0, 20" />
+                <Setter
+                    Property="HeightRequest"
+                    Value="45" />
+                <Setter
+                    Property="FontSize"
+                    Value="16" />
+            </Style>
+            <Style
+                x:Key="ContentPageDefault"
+                TargetType="ContentPage">
+                <Setter
+                    Property="Padding"
+                    Value="15, 15, 15, 15" />
+                <Setter
+                    Property="BackgroundColor"
+                    Value="{StaticResource VCLightGray}" />
+            </Style>
+            <Style
+                x:Key="StackLayoutBackgroundDefault"
+                TargetType="StackLayout">
+                <Setter
+                    Property="Padding"
+                    Value="15, 15, 15, 15" />
+                <Setter
+                    Property="BackgroundColor"
+                    Value="{StaticResource VCLightGray}" />
+            </Style>
+            <Style
+                x:Key="StackLayoutWhiteDefault"
+                TargetType="StackLayout">
+                <Setter
+                    Property="Padding"
+                    Value="15" />
+                <Setter
+                    Property="BackgroundColor"
+                    Value="White" />
+            </Style>
+            <Style
+                x:Key="StackLayoutWhiteNoPadding"
+                TargetType="StackLayout">
+                <Setter
+                    Property="BackgroundColor"
+                    Value="#FFFFFF" />
+            </Style>
+            <Style
+                x:Key="StackLayoutTransparentPadding"
+                TargetType="StackLayout">
+                <Setter
+                    Property="BackgroundColor"
+                    Value="Transparent" />
+                <Setter
+                    Property="Padding"
+                    Value="15" />
+            </Style>
+            <!-- CTA = CALL TO ACTION -->
+            <Style
+                x:Key="PrimaryCTA"
+                TargetType="Button">
+                <Setter
+                    Property="HorizontalOptions"
+                    Value="FillAndExpand" />
+                <Setter
+                    Property="BackgroundColor"
+                    Value="{StaticResource VodacomRed}" />
+                <Setter
+                    Property="TextColor"
+                    Value="#FFFFFF" />
+                <Setter
+                    Property="Margin"
+                    Value="0" />
+            </Style>
+            <Style
+                x:Key="SecondaryCTA"
+                TargetType="Button">
+                <Setter
+                    Property="HorizontalOptions"
+                    Value="FillAndExpand" />
+                <Setter
+                    Property="BackgroundColor"
+                    Value="{StaticResource VCDarkGray}" />
+                <Setter
+                    Property="TextColor"
+                    Value="#FFFFFF" />
+                <Setter
+                    Property="Margin"
+                    Value="0" />
+            </Style>
+            <Style
+                x:Key="SalesNoteCTA"
+                TargetType="Button">
+                <Setter
+                    Property="HorizontalOptions"
+                    Value="FillAndExpand" />
+                <Setter
+                    Property="BackgroundColor"
+                    Value="{StaticResource SalesNotePrimary}" />
+                <Setter
+                    Property="TextColor"
+                    Value="White" />
+                <Setter
+                    Property="Margin"
+                    Value="0" />
+            </Style>
+            <Style
+                x:Key="RoundedBlackOpaqueFrame"
+                TargetType="Frame">
+                <Setter
+                    Property="CornerRadius"
+                    Value="8" />
+                <Setter
+                    Property="BackgroundColor"
+                    Value="{StaticResource DarkerBlackOpaque}" />
+                <Setter
+                    Property="OutlineColor"
+                    Value="Transparent" />
+                <Setter
+                    Property="HorizontalOptions"
+                    Value="FillAndExpand" />
+                <Setter
+                    Property="HasShadow"
+                    Value="false" />
+            </Style>
+        </ResourceDictionary>
+    </prism:PrismApplication.Resources>
 </prism:PrismApplication>
