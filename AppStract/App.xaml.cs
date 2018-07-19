@@ -16,6 +16,7 @@ namespace AppStract
          * This imposes a limitation in which the App class must have a default constructor. 
          * App(IPlatformInitializer initializer = null) cannot be handled by the Activator.
          */
+        public static string User = "Etienne";
         public App() : this(null) { }
 
         public App(IPlatformInitializer initializer) : base(initializer) { }
@@ -24,7 +25,7 @@ namespace AppStract
         {
             InitializeComponent();
 
-            await NavigationService.NavigateAsync("NavigationPage/VoiceEnrollmentPage");
+            await NavigationService.NavigateAsync("NavigationPage/BotPage");
         }
 
         protected override void RegisterTypes(IContainerRegistry containerRegistry)
@@ -32,6 +33,7 @@ namespace AppStract
             containerRegistry.RegisterForNavigation<NavigationPage>();
             containerRegistry.RegisterForNavigation<MainPage>();
             containerRegistry.RegisterForNavigation<VoiceEnrollmentPage>();
+            containerRegistry.RegisterForNavigation<BotPage>();
         }
     }
 }

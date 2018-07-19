@@ -7,6 +7,10 @@ using AppStract.Dependencies;
 using System.IO;
 using Xamarin.Essentials;
 using Prism.Navigation;
+using Amazon.Lex;
+using Amazon.Runtime;
+using Amazon;
+using Amazon.Lex.Model;
 
 namespace AppStract.ViewModels
 {
@@ -58,17 +62,44 @@ namespace AppStract.ViewModels
         {
             _audioRecorder = audioRecorder;
             _audioPlayer = audioPlayer;
-            _myVoiceIt = new VoiceIt2("key_140b7c835a984de2a4921ea57d128245", "tok_c3d96357247149479e5b13375c13e124");
+            //_myVoiceIt = new VoiceIt2("key_140b7c835a984de2a4921ea57d128245", "tok_c3d96357247149479e5b13375c13e124");
 
             RecordVoiceText = "Start Recording";
         }
 
-        //public override async void OnNavigatingTo(NavigationParameters parameters)
-        //{
-        //    await TextToSpeech.SpeakAsync("Please say the passphrase");
+        public override async void OnNavigatingTo(NavigationParameters parameters)
+        {
+            //await TextToSpeech.SpeakAsync("Please say the passphrase");
 
-        //    RecordAudio();
-        //}
+            //RecordAudio();
+
+            var amazonLex = new AmazonLexClient("AKIAI6DDT5M37MGR7GRQ", "woEMaYL7PN9mcELs2kyRH0bXJw+Ooavf0T6bnUmI", RegionEndpoint.EUWest1);
+            var userId = Guid.NewGuid().ToString();
+
+            var postTextRequest = new PostTextRequest()
+            {
+                BotAlias = "FirstTest",
+                BotName = "BuyPackages",
+                UserId = userId,
+                InputText = "Can I please top up my account"
+            };
+
+            var response = await amazonLex.PostTextAsync(postTextRequest);
+            var sessionAttributes = response.SessionAttributes;
+            await TextToSpeech.SpeakAsync(response.Message);
+
+            var postTextRequestNew = new PostTextRequest()
+            {
+                BotAlias = "FirstTest",
+                BotName = "BuyPackages",
+                UserId = userId,
+                InputText = "Can I buy 20 rand airtime",
+                SessionAttributes = response.SessionAttributes
+            };
+
+            var SecondResponse = await amazonLex.PostTextAsync(postTextRequestNew);
+            await TextToSpeech.SpeakAsync(SecondResponse.Message);
+        }
 
         private void VerifyUsersVoice()
         {
